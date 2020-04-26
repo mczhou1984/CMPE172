@@ -1,0 +1,12 @@
+CREATE TABLE workforce_db.employee_info ( 
+  ID INT NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  email_address VARCHAR(100) NOT NULL,
+  address VARCHAR(100) NOT NULL,
+  ssn INT NOT NULL,
+  gender VARCHAR(100) NOT NULL,
+  start_date VARCHAR(100) NOT NULL,
+  team VARCHAR(100) NOT NULL,
+  annual_salary INT NOT NULL,
+  PRIMARY KEY (ID));
