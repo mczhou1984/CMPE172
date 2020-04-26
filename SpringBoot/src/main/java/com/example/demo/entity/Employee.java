@@ -30,7 +30,9 @@ public class Employee {
 		this.email_address = email_address;
 		this.address = address;
 		this.ssn = ssn;
+		this.gender = gender;
 		this.start_date = start_date;
+		this.team = team;
 		this.annual_salary = annual_salary;
 	}
 	
