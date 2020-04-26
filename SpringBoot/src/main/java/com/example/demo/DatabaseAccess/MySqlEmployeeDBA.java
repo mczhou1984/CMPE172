@@ -1,10 +1,11 @@
-package com.example.demo.dba;
+package com.example.demo.DatabaseAccess;
 
-import com.example.demo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import com.example.demo.Entity.Employee;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,13 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
             employee.setId(resultSet.getInt("id"));
             employee.setFirstName(resultSet.getString("first_name"));
             employee.setLastName(resultSet.getString("last_name"));
-            
+            employee.setEmailAddress(resultSet.getString("email_address"));
+            employee.setAddress(resultSet.getString("address"));
+            employee.setSSN(resultSet.getInt("ssn"));
+            employee.setGender(resultSet.getString("gender"));
+            employee.setTeam(resultSet.getString("team"));
+            employee.setStartDate(resultSet.getString("start_date"));
+            employee.setAnnualSalary(resultSet.getInt("annual_salary"));
             return employee;
         }
     }
@@ -72,7 +79,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         final String address = employee.getAddress();
         final int ssn = employee.getSSN();
         final String gender = employee.getGender();
-        final Date start_date = employee.getStartDate();
+        final String start_date = employee.getStartDate();
         final String team = employee.getTeam();
         final int annual_salary = employee.getAnnualSalary();
         jdbcTemplate.update(sql, new Object[]{id, firstname, lastname, email_address, address, ssn, gender, 
@@ -91,11 +98,11 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         final String address = employee.getAddress();
         final int ssn = employee.getSSN();
         final String gender = employee.getGender();
-        final Date start_date = employee.getStartDate();
+        final String start_date = employee.getStartDate();
         final String team = employee.getTeam();
         final int annual_salary = employee.getAnnualSalary();
         jdbcTemplate.update(sql, new Object[] {firstname, lastname, email_address, address, ssn, gender, 
         										start_date, team, annual_salary});
     }
-    }
+    
 }

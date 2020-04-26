@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.Entity;
 
 import java.util.Date;
 import javax.persistence.Entity;
@@ -17,13 +17,13 @@ public class Employee {
 	private String address;
 	private int ssn;
 	private String gender;
-	private Date start_date;
+	private String start_date;
 	private String team;
 	private int annual_salary;
 	
 	public Employee() {}
 	public Employee (int id, String first_name, String last_name, String email_address,
-						String address, int ssn, String gender, Date start_date, String team, int annual_salary) {
+						String address, int ssn, String gender, String start_date, String team, int annual_salary) {
 		this.id= id;
 		this.first_name = first_name;
 		this.last_name = last_name;
@@ -78,10 +78,10 @@ public class Employee {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Date getStartDate() {
+	public String getStartDate() {
 		return this.start_date;
 	}
-	public void setStartDate(Date start_date) {
+	public void setStartDate(String start_date) {
 		this.start_date = start_date;
 	}
 	public String getTeam() {

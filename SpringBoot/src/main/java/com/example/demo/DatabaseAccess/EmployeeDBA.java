@@ -1,6 +1,7 @@
-package com.example.demo.dba;
-import com.example.demo.entity.Employee;
+package com.example.demo.DatabaseAccess;
 import java.util.Collection;
+
+import com.example.demo.Entity.Employee;
 
 public interface EmployeeDBA {
     Collection<Employee> getAllEmployees();

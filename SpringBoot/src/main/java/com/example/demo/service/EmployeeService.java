@@ -1,11 +1,11 @@
-package com.example.demo.service;
+package com.example.demo.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dba.EmployeeDBA;
-import com.example.demo.entity.Employee;
+import com.example.demo.DatabaseAccess.EmployeeDBA;
+import com.example.demo.Entity.Employee;
 
 import java.util.Collection;
 
