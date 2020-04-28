@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {Card, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEdit, faPlusSquare, faSave} from '@fortawesome/free-solid-svg-icons';
 
 export default class Employee extends Component {
 
@@ -10,11 +12,40 @@ export default class Employee extends Component {
     this.state = this.initialState;
     this.employeeChange = this.employeeChange.bind(this);
     this.submitEmployee = this.submitEmployee.bind(this);
-  }
+  };
 
   initialState = {
-    first_name:'', last_name:'', email_address:'', address:'',
+    id:'', first_name:'', last_name:'', email_address:'', address:'',
     ssn:'', gender:'', start_date:'', team:'', annual_salary:''
+  };
+
+  componentDidMount() {
+    const employeeId = +this.props.match.params.id;
+    if(employeeId) {
+      this.findEmployeeById(employeeId);
+    }
+  }
+
+  findEmployeeById = (employeeId) => {
+    axios.get("https://localhost:8080/Employee/"+employeeId)
+        .then(response => {
+            if(response.data != null) {
+                this.setState({
+                  id: response.data.id,
+                  first_name: response.data.first_name,
+                  last_name: response.data.last_name,
+                  email_address: response.data.email_address,
+                  address: response.data.address,
+                  ssn: response.data.ssn,
+                  gender: response.data.gender,
+                  start_date: response.data.start_date,
+                  team: response.data.team,
+                  annual_salary: response.data.annual_salary
+                });
+            }
+        }).catch((error) => {
+            console.error("Error -" + error);
+        });
   }
 
   submitEmployee = event => {
@@ -32,6 +63,14 @@ export default class Employee extends Component {
         annual_salary: this.state.annual_salary
     };
         console.log(this.state.first_name);
+        console.log(this.state.last_name);
+        console.log(this.state.email_address);
+        console.log(this.state.address);
+        console.log(this.state.ssn);
+        console.log(this.state.gender);
+        console.log(this.state.start_date);
+        console.log(this.state.team);
+        console.log(this.state.annual_salary);
     axios.post("http://localhost:8080/Employee", employee)
         .then(response => {
             if(response.data != null) {
@@ -39,18 +78,19 @@ export default class Employee extends Component {
                 alert("Employee Saved Successfully");
             }
         });
-   }
+   };
 
   employeeChange = event => {
     this.setState({
       [event.target.name]:event.target.value
     });
-  }
+  };
 
   render() {
     return (
       <Card className={"border border-dark bg-dark text-white"}>
-          <Card.Header>Add Employee</Card.Header>
+          <Card.Header>
+          <FontAwesomeIcon icon={this.state.id ? faEdit : faPlusSquare} /> {this.state.id ? "Update Employee" : " Add Employee"}</Card.Header>
               <Form onSubmit={this.submitEmployee} id="employeeFormId">
                   <Card.Body>
                     <Form.Row>
@@ -139,8 +179,9 @@ export default class Employee extends Component {
                 </Card.Body>
                 <Card.Footer style={{"textAlign":"right"}}>
                     <Button size="sm" variant="success" type="submit">
-                        Submit
-                    </Button>
+                        <FontAwesomeIcon icon={faSave} /> {this.state.id ? "Update" : "Submit"}
+                    </Button>{' '}
+
                 </Card.Footer>
             </Form>
 

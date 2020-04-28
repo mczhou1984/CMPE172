@@ -74,7 +74,7 @@ export default class EmployeeList extends Component {
                               <td>{employee.team}</td>
                               <td>{employee.annualSalary}</td>
                               <td>
-                                  <Button size="sm" variant="outline-primary"><FontAwesomeIcon icon={faEdit} /></Button>
+                                  <Link to={"edit/"+employee.id} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEdit} /></Link>{'  '}
                                   <Button size="sm" variant="outline-danger" onClick={this.deleteEmployee.bind(this,employee.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                               </td>
                           </tr>

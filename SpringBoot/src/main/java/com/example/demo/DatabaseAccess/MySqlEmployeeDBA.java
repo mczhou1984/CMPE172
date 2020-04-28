@@ -72,8 +72,8 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         final String sql = "UPDATE employee_info SET first_name = ?, last_name = ?, email_addres = ?, address = ?, "
         					+ " ssn = ?, gender = ? , start_date = ?, team = ? , annual_salary = ? WHERE id = ?";
         final int id = employee.getId();
-        final String firstname = employee.getFirstName();
-        final String lastname = employee.getLastName();
+        final String first_name = employee.getFirstName();
+        final String last_name = employee.getLastName();
         final String email_address = employee.getEmailAddress();
         final String address = employee.getAddress();
         final int ssn = employee.getSSN();
@@ -81,7 +81,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         final String start_date = employee.getStartDate();
         final String team = employee.getTeam();
         final int annual_salary = employee.getAnnualSalary();
-        jdbcTemplate.update(sql, new Object[]{id, firstname, lastname, email_address, address, ssn, gender, 
+        jdbcTemplate.update(sql, new Object[]{id, first_name, last_name, email_address, address, ssn, gender, 
         										start_date, team, annual_salary});
     }
 
@@ -91,8 +91,8 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         // VALUES (value1, value2, value3,...)
         final String sql = "INSERT INTO employee_info (first_name, last_name, email_address, address,"
         					+ " ssn, gender, start_date, team, annual_salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        final String firstname = employee.getFirstName();
-        final String lastname = employee.getLastName();
+        final String first_name = employee.getFirstName();
+        final String last_name = employee.getLastName();
         final String email_address = employee.getEmailAddress();
         final String address = employee.getAddress();
         final int ssn = employee.getSSN();
@@ -100,7 +100,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         final String start_date = employee.getStartDate();
         final String team = employee.getTeam();
         final int annual_salary = employee.getAnnualSalary();
-        jdbcTemplate.update(sql, new Object[] {firstname, lastname, email_address, address, ssn, gender, 
+        jdbcTemplate.update(sql, new Object[] {first_name, last_name, email_address, address, ssn, gender, 
         										start_date, team, annual_salary});
     }
     
