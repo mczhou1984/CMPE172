@@ -89,7 +89,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
     public void insertEmployeeToDb(Employee employee) {
         // INSERT INTO table_name (column1, column2, column3,...)
         // VALUES (value1, value2, value3,...)
-        final String sql = "INSERT INTO students (first_name, last_name, email_address, address,"
+        final String sql = "INSERT INTO employee_info (first_name, last_name, email_address, address,"
         					+ " ssn, gender, start_date, team, annual_salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         final String firstname = employee.getFirstName();
         final String lastname = employee.getLastName();

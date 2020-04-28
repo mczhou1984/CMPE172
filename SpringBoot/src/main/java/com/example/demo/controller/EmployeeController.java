@@ -38,7 +38,7 @@ public class EmployeeController {
 	    }
 
 	    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	    public void insertStudent(@RequestBody Employee employee){
+	    public void insertEmployee(@RequestBody Employee employee){
 	    	employeeService.insertEmployee(employee);
 	    }
 }
