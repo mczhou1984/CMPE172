@@ -27,7 +27,7 @@ export default class Employee extends Component {
   }
 
   findEmployeeById = (employeeId) => {
-    axios.get("https://localhost:8080/Employee/"+employeeId)
+    axios.get("https://192.168.99.100:8085/Employee/"+employeeId)
         .then(response => {
             if(response.data != null) {
                 this.setState({
@@ -71,7 +71,7 @@ export default class Employee extends Component {
         console.log(this.state.start_date);
         console.log(this.state.team);
         console.log(this.state.annual_salary);
-    axios.post("http://localhost:8080/Employee", employee)
+    axios.post("http://192.168.99.100:8085/Employee", employee)
         .then(response => {
             if(response.data != null) {
                 this.setState(this.initialState);

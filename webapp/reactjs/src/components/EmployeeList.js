@@ -14,7 +14,7 @@ export default class EmployeeList extends Component {
     };
   }
   componentDidMount() {
-    axios.get("http://localhost:8080/Employee")
+    axios.get("http://192.168.99.100:8085/Employee")
           .then(response => response.data)
           .then(data =>{
               this.setState({employees: data});
@@ -22,7 +22,7 @@ export default class EmployeeList extends Component {
   }
 
   deleteEmployee = (employeeId) => {
-      axios.delete("http://localhost:8080/Employee/"+employeeId)
+      axios.delete("http://192.168.99.100:8085/Employee/"+employeeId)
       .then(response => {
           if(response.data != null) {
               alert("Employee deleted successfully.");
