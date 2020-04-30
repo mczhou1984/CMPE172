@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/Employee")
-@CrossOrigin(origins="http://localhost:3000")
+@RequestMapping("/api")
+//@CrossOrigin(origins="http://localhost:3000")
 public class EmployeeController {
 
 	    @Autowired
