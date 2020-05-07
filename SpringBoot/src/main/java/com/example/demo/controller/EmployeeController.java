@@ -33,12 +33,13 @@ public class EmployeeController {
 	    }
 
 	    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	    public void deleteEmployeeById(@RequestBody Employee employee){
+	    public void updateEmployeeById(@RequestBody Employee employee){
 	    	employeeService.updateEmployee(employee);
 	    }
 
 	    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	    public void insertEmployee(@RequestBody Employee employee){
+	    	System.out.print(employee.getFirstName() + " " + employee.getLastName() + " " + employee.getEmailAddress() + " " + employee.getAddress() + " " + employee.getGender() + " " + employee.getSSN() + " " + employee.getStartDate() + " " + employee.getTeam() + " " + employee.getAnnualSalary());
 	    	employeeService.insertEmployee(employee);
 	    }
 }

@@ -79,6 +79,30 @@ export default class Employee extends Component {
             }
         });
    };
+   
+   updateEmployee = event => {
+	   event.preventDefault();
+
+	     const employee = {
+	         first_name: this.state.first_name,
+	         last_name: this.state.last_name,
+	         email_address: this.state.email_address,
+	         address: this.state.address,
+	         ssn: this.state.ssn,
+	         gender: this.state.gender,
+	         start_date: this.state.start_date,
+	         team: this.state.team,
+	         annual_salary: this.state.annual_salary
+	     };
+	         
+	     axios.put("/api", employee)
+	         .then(response => {
+	             if(response.data != null) {
+	                 this.setState(this.initialState);
+	                 alert("Employee Saved Successfully");
+	             }
+	         });
+	    };
 
   employeeChange = event => {
     this.setState({

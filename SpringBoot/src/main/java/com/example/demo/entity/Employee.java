@@ -34,6 +34,19 @@ public class Employee {
 		this.team = team;
 		this.annual_salary = annual_salary;
 	}
+
+	public Employee(String first_name, String last_name, String email_address, String address, int ssn, String gender,
+			String start_date, String team, int annual_salary) {
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email_address = email_address;
+		this.address = address;
+		this.ssn = ssn;
+		this.gender = gender;
+		this.start_date = start_date;
+		this.team = team;
+		this.annual_salary = annual_salary;
+	}
 	
 	public int getId() {
 		return this.id;

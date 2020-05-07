@@ -41,7 +41,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
     public Collection<Employee> getAllEmployees() {
         // SELECT column_name(s) FROM table_name
         final String sql = "SELECT id, first_name, last_name, email_address, address, ssn, gender, start_date, "
-        					+ "team, annual_salary FROM employee_info";
+        					+ "team, annual_salary FROM employee";
         List<Employee> employee = jdbcTemplate.query(sql, new EmployeeRowMapper());
         return employee;
     }
@@ -50,7 +50,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
     public Employee getEmployeeById(int id) {
         // SELECT column_name(s) FROM table_name where column = value
         final String sql = "SELECT id, first_name, last_name, email_address, address, ssn, gender, start_date, "
-        						+ "team, annual_salary FROM employee_info "
+        						+ "team, annual_salary FROM employee"
         						+ "WHERE id = ?";
         Employee employee = jdbcTemplate.queryForObject(sql, new EmployeeRowMapper(), id);
         return employee;
@@ -60,7 +60,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
     public void removeEmployeeById(int id) {
         // DELETE FROM table_name
         // WHERE some_column = some_value
-        final String sql = "DELETE FROM employee_info WHERE id = ?";
+        final String sql = "DELETE FROM employee WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
@@ -69,7 +69,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         // UPDATE table_name
         // SET column1=value, column2=value2,...
         // WHERE some_column=some_value
-        final String sql = "UPDATE employee_info SET first_name = ?, last_name = ?, email_addres = ?, address = ?, "
+        final String sql = "UPDATE employee SET first_name = ?, last_name = ?, email_addres = ?, address = ?, "
         					+ " ssn = ?, gender = ? , start_date = ?, team = ? , annual_salary = ? WHERE id = ?";
         final int id = employee.getId();
         final String first_name = employee.getFirstName();
@@ -81,16 +81,18 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         final String start_date = employee.getStartDate();
         final String team = employee.getTeam();
         final int annual_salary = employee.getAnnualSalary();
-        jdbcTemplate.update(sql, new Object[]{id, first_name, last_name, email_address, address, ssn, gender, 
-        										start_date, team, annual_salary});
+        jdbcTemplate.update(sql, new Object[]{first_name, last_name, email_address, address, ssn, gender, 
+        										start_date, team, annual_salary, id});
     }
 
     @Override
     public void insertEmployeeToDb(Employee employee) {
+
         // INSERT INTO table_name (column1, column2, column3,...)
         // VALUES (value1, value2, value3,...)
-        final String sql = "INSERT INTO employee_info (first_name, last_name, email_address, address,"
+        final String sql = "INSERT INTO employee (first_name, last_name, email_address, address,"
         					+ " ssn, gender, start_date, team, annual_salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+       
         final String first_name = employee.getFirstName();
         final String last_name = employee.getLastName();
         final String email_address = employee.getEmailAddress();
@@ -100,7 +102,7 @@ public class MySqlEmployeeDBA implements EmployeeDBA {
         final String start_date = employee.getStartDate();
         final String team = employee.getTeam();
         final int annual_salary = employee.getAnnualSalary();
-        jdbcTemplate.update(sql, new Object[] {first_name, last_name, email_address, address, ssn, gender, 
+        jdbcTemplate.update(sql, new Object[] {first_name, last_name, email_address, address, ssn, gender,
         										start_date, team, annual_salary});
     }
     
