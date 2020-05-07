@@ -22,7 +22,7 @@ Instructions on how to run the project locally:
 UML Diagrams
 
 Class Diagram
-[](images/ClassDiagram.png)
+![](images/ClassDiagram.png)
 
 Sequence diagrams
 
