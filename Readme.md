@@ -21,7 +21,10 @@ Instructions on how to run the project locally:
 	
 UML Diagrams
 
-Class and Sequence diagrams
+Class Diagram
+[](images/ClassDiagram.png)
+
+Sequence diagrams
 
 Midtier APIs:
 GET Method
